@@ -1,7 +1,7 @@
 import React from "react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
+import { Button } from "./components/ui/button";
+import { Card, CardContent } from "./components/ui/card";
+import { Input } from "./components/ui/input";
 import { motion } from "framer-motion";
 
 export default function HomePage() {
