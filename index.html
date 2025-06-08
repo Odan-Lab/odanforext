@@ -71,11 +71,19 @@
     responseDiv.textContent = "Submitting...";
 
     try {
-      const res = await fetch('https://script.google.com/macros/s/AKfycbyRotZ0D5xN0dbPrknFMIFw0CuvIe9mV2r_RfMdNTOeHlqQJV6iS5zs1NZO7ljPPEEV2A/exec', {
+      const res = await fetch('https://script.google.com/macros/s/AKfycbw5_dCc9_a2hmoTRx1HkPe63zU8qZjPIbXsVOilhhgtHTZ245MgkHgSa8oCAljJ1N-SZw/exec', {
         method: 'POST',
-        body: JSON.stringify({ email, referralCode: referral }),
-        headers: { 'Content-Type': 'application/json' }
-      });
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            email: "test@example.com",
+            referralCode: "abc123"
+          })
+        })
+        .then(response => response.json())
+        .then(data => console.log("✅ Success:", data))
+        .catch(error => console.error("❌ Error:", error));
 
       const data = await res.json();
 
