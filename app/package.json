@@ -1,6 +1,7 @@
 {
   "name": "app",
   "version": "0.1.0",
+  "homepage": "https://odan-lab.github.io/odanforext",
   "private": true,
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
@@ -38,6 +39,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "homepage": "https://odan-lab.github.io/odanforext"
+  }
 }
