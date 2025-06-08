@@ -9,21 +9,35 @@
     font-family: Arial, sans-serif;
     background: #0e0e0e;
     color: white;
-    margin: 0; padding: 1rem;
+    margin: 0;
+    padding: 1rem;
     display: flex;
     justify-content: center;
   }
   #waitlist {
-    max-width: 640px;
+    max-width: 400px;
     width: 100%;
+    background: #1a1a1a;
+    padding: 2rem;
+    border-radius: 8px;
   }
-  h2 {
-    text-align: center;
-  }
-  iframe {
+  input, button {
     width: 100%;
-    height: 700px;
+    padding: 0.75rem;
+    margin-top: 1rem;
     border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  button {
+    background: #03dac6;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  #response {
+    margin-top: 1rem;
+    text-align: center;
   }
 </style>
 </head>
@@ -31,22 +45,53 @@
 
 <section id="waitlist">
   <h2>Join Our Waitlist</h2>
-  <iframe id="waitlist-form" loading="lazy"></iframe>
+  <form id="waitlist-form">
+    <input type="email" id="email" name="email" placeholder="Enter your email" required />
+    <input type="hidden" id="referralCode" name="referralCode" />
+    <button type="submit">Join Waitlist</button>
+  </form>
+  <div id="response"></div>
 </section>
 
 <script>
-  const baseFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLScEYNNYYHkVauYUTy3KCSLFy9vEt9q853QUeq0_uXmdygS68w/viewform?usp=pp_url";
-  const referralEntryId = "entry.1800141221"; // <-- replace with your actual referral field ID
-
+  // Set referralCode from URL param
   const urlParams = new URLSearchParams(window.location.search);
-  const ref = urlParams.get('ref');
+  const referralCode = urlParams.get('ref') || "";
+  document.getElementById('referralCode').value = referralCode;
 
-  let formUrl = baseFormUrl;
-  if(ref) {
-    formUrl += `&${referralEntryId}=${encodeURIComponent(ref)}`;
-  }
+  const form = document.getElementById('waitlist-form');
+  const responseDiv = document.getElementById('response');
 
-  document.getElementById("waitlist-form").src = formUrl;
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const email = form.email.value.trim();
+    const referral = form.referralCode.value;
+
+    responseDiv.textContent = "Submitting...";
+
+    try {
+      const res = await fetch('https://script.google.com/macros/s/AKfycbyRotZ0D5xN0dbPrknFMIFw0CuvIe9mV2r_RfMdNTOeHlqQJV6iS5zs1NZO7ljPPEEV2A/exec', {
+        method: 'POST',
+        body: JSON.stringify({ email, referralCode: referral }),
+        headers: { 'Content-Type': 'application/json' }
+      });
+
+      const data = await res.json();
+
+      if (data.status === 'success') {
+        responseDiv.style.color = '#03dac6';
+        responseDiv.textContent = data.message;
+        form.reset();
+      } else {
+        responseDiv.style.color = 'red';
+        responseDiv.textContent = data.message || 'Something went wrong.';
+      }
+    } catch (error) {
+      responseDiv.style.color = 'red';
+      responseDiv.textContent = 'Network error. Please try again later.';
+    }
+  });
 </script>
 
 </body>
