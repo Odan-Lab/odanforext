@@ -1,45 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ODAN FOREXT</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ODAN Waitlist</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #0e0e0e;
+    color: white;
+    margin: 0; padding: 1rem;
+    display: flex;
+    justify-content: center;
+  }
+  #waitlist {
+    max-width: 640px;
+    width: 100%;
+  }
+  h2 {
+    text-align: center;
+  }
+  iframe {
+    width: 100%;
+    height: 700px;
+    border: none;
+  }
+</style>
 </head>
 <body>
-  <header>
-    <h1>ODAN Forext</h1>
-    <p>Reimagining the Blockchain Future</p>
-  </header>
 
-  <section id="waitlist">
-    <h2>Join Our Waitlist</h2>
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScEYNNYYHkVauYUTy3KCSLFy9vEt9q853QUeq0_uXmdygS68w/viewform?embedded=true" 
-        width="100%" height="50%" frameborder="0" marginheight="0" marginwidth="0">
-        Loading…
-    </iframe>
-  </section>
+<section id="waitlist">
+  <h2>Join Our Waitlist</h2>
+  <iframe id="waitlist-form" loading="lazy"></iframe>
+</section>
 
+<script>
+  const baseFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLScEYNNYYHkVauYUTy3KCSLFy9vEt9q853QUeq0_uXmdygS68w/viewform?usp=pp_url";
+  const referralEntryId = "entry.987654321"; // <-- replace with your actual referral field ID
 
-  <section id="waitlist">
-    <h2>Join Our Waitlist</h2>
-    <form id="waitlist-form">
-      <input type="email" id="email" placeholder="Enter your email" required />
-      <button type="submit">Join Waitlist</button>
-    </form>
-    <p id="form-response"></p>
-  </section>
+  const urlParams = new URLSearchParams(window.location.search);
+  const ref = urlParams.get('ref');
 
-  <section id="whitepaper">
-    <h2>ODAN Whitepaper</h2>
-    <p>Read about the vision, technology, and roadmap of the ODAN network.</p>
-    <a href="whitepaper.pdf" download>Download Whitepaper</a>
-  </section>
+  let formUrl = baseFormUrl;
+  if(ref) {
+    formUrl += `&${referralEntryId}=${encodeURIComponent(ref)}`;
+  }
 
-  <footer>
-    <p>&copy; 2025 ODAN Network. All rights reserved.</p>
-  </footer>
+  document.getElementById("waitlist-form").src = formUrl;
+</script>
 
-  <script src="script.js"></script>
 </body>
 </html>
