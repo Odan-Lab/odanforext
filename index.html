@@ -90,7 +90,6 @@
       messageDiv.textContent = "";
 
       const email = document.getElementById("email").value;
-      const referralCode = getReferralCode();
 
       try {
         const response = await fetch("https://wlsdd.onrender.com/api/join/", {
@@ -98,7 +97,7 @@
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ email, referralCode }),
+          body: JSON.stringify({email}),
         });
 
         const data = await response.json();
