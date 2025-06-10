@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Join the Odan Waitlist</title>
   <style>
     body {
       font-family: sans-serif;
@@ -153,18 +151,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>Hosterr Waitlist Page</title>
+    <title>Odan Waitlist</title>
   </head>
   <body>
     <header>
       <div class="logo">
         <img src="/Assets/Logo.svg" alt="" />
-        <a href="#">hosterr is hiring!</a>
       </div>
       <nav>
         <ul>
           <li>
-            <a href="#"> Plans </a>
+            <a href="#"> RoadMap </a>
           </li>
           <li>
             <a href="#">Find Domain </a>
@@ -176,9 +173,7 @@
       </nav>
 
       <div class="nav_form-links">
-        <a href=""> sign in </a>
-
-        <button class="btn">Join Waitlist</button>
+        <button class="btn" type="submit">Join Waitlist</button>
       </div>
       <svg
         width="24"
@@ -212,9 +207,9 @@
           minutes with the most competitive pricing packages available <br />
           online.
         </p>
-        <div class="form">
-          <input type="text" placeholder="Enter e-mail address" />
-          <button class="btn">Join Waitlist</button>
+        <div class="form" id="waitlist-form">
+            <input type="email" id="email" placeholder="Enter your email" required />
+            <button class="btn" type="submit">Join Waitlist</button>
         </div>
         <div class="form_info">
           <img src="/Assets/Checkmark.svg" alt="" />
