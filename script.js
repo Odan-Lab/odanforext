@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+  fetchStats();
   const form = document.getElementById('waitlist-form');
   const message = document.getElementById('response-message');
   const referralSection = document.getElementById('referral-section');
@@ -24,6 +25,48 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
+
+  async function fetchStats() {
+    try {
+      const response = await fetch('https://wlsdd.onrender.com/api/stats/');
+      const data = await response.json();
+      
+      if (response.ok) {
+        const isWaitlistActive = data.is_waitlist_active;
+        
+        if (isWaitlistActive) {
+          // Show waitlist period stats
+          animateValue('waitlist-members', 0, data.waitlist_members, 2000);
+          animateValue('total-rewards', 0, data.total_rewards, 2000);
+          animateValue('total-invites', 0, data.total_invites, 2000);
+          
+          // Update labels to be more specific
+          document.querySelector('#waitlist-members').nextElementSibling.textContent = 'Waitlist Members';
+          document.querySelector('#total-rewards').nextElementSibling.textContent = 'ODAN Rewards';
+          document.querySelector('#total-invites').nextElementSibling.textContent = 'Total Invites';
+        } else {
+          // Show post-waitlist stats
+          animateValue('waitlist-members', 0, data.total_members, 2000);
+          animateValue('total-rewards', 0, data.countries, 2000);
+          animateValue('total-invites', 0, data.properties, 2000);
+          
+          // Update labels
+          document.querySelector('#waitlist-members').nextElementSibling.textContent = 'Members';
+          document.querySelector('#total-rewards').nextElementSibling.textContent = 'Countries';
+          document.querySelector('#total-invites').nextElementSibling.textContent = 'Properties';
+        }
+      } else {
+        console.error('Error fetching stats:', data);
+      }
+    } catch (error) {
+      console.error('Network error:', error);
+      // Fallback values
+      animateValue('waitlist-members', 0, 5000, 2000);
+      animateValue('total-rewards', 0, 250000, 2000);
+      animateValue('total-invites', 0, 12000, 2000);
+    }
+  }
+
   // Animate stats counter
   function animateValue(id, start, end, duration) {
     const obj = document.getElementById(id);
@@ -31,7 +74,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const step = (timestamp) => {
       if (!startTimestamp) startTimestamp = timestamp;
       const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-      obj.innerHTML = Math.floor(progress * (end - start) + start) + (id === 'properties' ? '+' : '');
+      
+      // Handle decimal values for rewards
+      if (id === 'total-rewards') {
+        obj.innerHTML = (progress * (end - start) + start).toFixed(2);
+      } else {
+        obj.innerHTML = Math.floor(progress * (end - start) + start);
+      }
+      
       if (progress < 1) {
         window.requestAnimationFrame(step);
       }

@@ -210,6 +210,14 @@ main {
   margin: 2rem 0;
 }
 
+.stats-container {
+  transition: all 0.5s ease;
+}
+
+.stat-number {
+  transition: all 0.5s ease;
+}
+
 .stat-item {
   text-align: center;
 }
