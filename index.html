@@ -2,140 +2,145 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Odan</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <title>Join the Odan Waitlist</title>
   <style>
     body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: #0b0b0b;
-      color: white;
+      font-family: sans-serif;
+      background: #f4f4f4;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 20px;
-      text-align: center;
+      padding-top: 50px;
     }
-    .logo {
-      width: 100px;
-      height: 100px;
-      margin-bottom: 20px;
-    }
-    h1 {
-      font-size: 2em;
-      margin-bottom: 0.5em;
-    }
-    p {
-      max-width: 500px;
-      margin-bottom: 2em;
-    }
+
     form {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
       display: flex;
       flex-direction: column;
       gap: 10px;
-      max-width: 400px;
-      width: 100%;
-      margin-bottom: 1em;
+      width: 300px;
     }
-    input {
-      padding: 12px;
-      border: none;
-      border-radius: 5px;
-      font-size: 1em;
+
+    input, button {
+      padding: 10px;
+      font-size: 16px;
     }
-    button {
-      padding: 12px;
-      background-color: #28a745;
-      border: none;
-      color: white;
-      font-weight: bold;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 1em;
+
+    #referral-section {
+      display: none;
+      margin-top: 20px;
+      text-align: center;
     }
-    .share-button {
+
+    #referral-link {
+      word-break: break-all;
+      margin-bottom: 10px;
+    }
+
+    .social-buttons {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
       margin-top: 10px;
-      background-color: #007bff;
     }
-    .social-icons {
-      margin-top: 30px;
-    }
-    .social-icons a {
-      margin: 0 10px;
-      color: white;
-      font-size: 1.5em;
+
+    .social-buttons a {
       text-decoration: none;
+      font-size: 20px;
+      padding: 10px;
+      border-radius: 8px;
+      color: white;
     }
-    .message {
-      margin-top: 10px;
-      font-size: 0.95em;
-    }
+
+    .twitter { background: #1DA1F2; }
+    .whatsapp { background: #25D366; }
+    .telegram { background: #0088cc; }
   </style>
 </head>
 <body>
-  <!-- <img src="odan.png" alt="Odan Logo" class="logo"> -->
-  <h1>Join the Odan Waitlist</h1>
-  <p>Odan is a proof-of-stake Bitcoin fork built for real estate. Join early and get rewarded in ODAN. Share to earn more!</p>
-
   <form id="waitlist-form">
     <input type="email" id="email" placeholder="Enter your email" required />
     <button type="submit">Join Waitlist</button>
   </form>
 
-  <button class="share-button" onclick="shareReferral()">Share Your Referral Link</button>
-  <p class="message" id="response-message"></p>
+  <p id="response-message"></p>
 
-  <div class="social-icons">
-    <a href="#" target="_blank">&#x1F426;</a>
-    <a href="#" target="_blank">&#x1F4F7;</a>
-    <a href="#" target="_blank">&#x1F4F1;</a>
+  <div id="referral-section">
+    <strong>Your Referral Link:</strong>
+    <p id="referral-link"></p>
+    <button id="copy-button">Copy Referral Link</button>
+
+    <div class="social-buttons">
+      <a id="twitter-share" class="twitter" href="#" target="_blank">Twitter</a>
+      <a id="whatsapp-share" class="whatsapp" href="#" target="_blank">WhatsApp</a>
+      <a id="telegram-share" class="telegram" href="#" target="_blank">Telegram</a>
+    </div>
   </div>
 
   <script>
     const form = document.getElementById('waitlist-form');
     const message = document.getElementById('response-message');
+    const referralSection = document.getElementById('referral-section');
+    const referralLinkElem = document.getElementById('referral-link');
+    const copyButton = document.getElementById('copy-button');
+
+    const twitterShare = document.getElementById('twitter-share');
+    const whatsappShare = document.getElementById('whatsapp-share');
+    const telegramShare = document.getElementById('telegram-share');
+
+    const getRefFromURL = () => {
+      const params = new URLSearchParams(window.location.search);
+      return params.get('ref');
+    };
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       const email = document.getElementById('email').value;
+      const ref = getRefFromURL();
 
       try {
-        console.log("Submitting email:", email);
         const response = await fetch('https://wlsdd.onrender.com/api/join/', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ email })
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, ref })
         });
 
         const data = await response.json();
 
         if (response.ok) {
-          message.textContent = data.message || 'You have joined the waitlist!';
+          message.textContent = data.message || 'Successfully joined the waitlist!';
+          const referralLink = `https://odanforext.xyz?ref=${encodeURIComponent(email)}`;
+          referralLinkElem.textContent = referralLink;
+          referralSection.style.display = 'block';
+
+          copyButton.onclick = () => {
+            navigator.clipboard.writeText(referralLink);
+            copyButton.textContent = 'Copied!';
+            setTimeout(() => { copyButton.textContent = 'Copy Referral Link'; }, 2000);
+          };
+
+          // Social share links
+          const shareText = encodeURIComponent("Join the Odan waitlist and earn ODAN tokens! 🚀");
+          const twitterURL = `https://twitter.com/intent/tweet?text=${shareText}&url=${referralLink}`;
+          const whatsappURL = `https://api.whatsapp.com/send?text=${shareText}%20${referralLink}`;
+          const telegramURL = `https://t.me/share/url?url=${referralLink}&text=${shareText}`;
+
+          twitterShare.href = twitterURL;
+          whatsappShare.href = whatsappURL;
+          telegramShare.href = telegramURL;
+
         } else {
-          message.textContent = data.message || data.detail || 'Something went wrong.';
+          message.textContent = data.detail || 'Something went wrong.';
         }
-      } catch (err) {
-        message.textContent = 'Network error. Please try again.';
+      } catch (error) {
+        message.textContent = 'Network error. Please try again later.';
+        console.error(error);
       }
     });
-
-    // function shareReferral() {
-    //   const email = document.getElementById('email').value;
-    //   if (!email) {
-    //     alert('Please enter your email first.');
-    //     return;
-    //   }
-    //   const referralLink = `https://odanforext.xyz/?ref=${encodeURIComponent(email)}`;
-    //   navigator.clipboard.writeText(referralLink);
-    //   alert('Referral link copied to clipboard!');
-    // }
   </script>
 </body>
 </html>
-
