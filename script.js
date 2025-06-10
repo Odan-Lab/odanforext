@@ -29,7 +29,7 @@ form.addEventListener('submit', async (e) => {
     const data = await response.json();
 
     if (response.ok) {
-      message.textContent = data.message || 'Successfully joined the waitlist!';
+      message.textContent = data.message || 'Successfully joined the waitlist! No spam. Unsubscribe anytime.';
       const referralLink = `https://odanforext.xyz?ref=${encodeURIComponent(email)}`;
       referralLinkElem.textContent = referralLink;
       referralSection.style.display = 'block';
