@@ -1,99 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <style>
-    body {
-      font-family: sans-serif;
-      background: #f4f4f4;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-top: 50px;
-    }
-
-    form {
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      width: 300px;
-    }
-
-    input, button {
-      padding: 10px;
-      font-size: 16px;
-    }
-
-    #referral-section {
-      display: none;
-      margin-top: 20px;
-      text-align: center;
-    }
-
-    #referral-link {
-      word-break: break-all;
-      margin-bottom: 10px;
-    }
-
-    .social-buttons {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      margin-top: 10px;
-    }
-
-    .social-buttons a {
-      text-decoration: none;
-      font-size: 20px;
-      padding: 10px;
-      border-radius: 8px;
-      color: white;
-    }
-
-    .twitter { background: #1DA1F2; }
-    .whatsapp { background: #25D366; }
-    .telegram { background: #0088cc; }
-  </style>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Odan Waitlist</title>
 </head>
 <body>
-  <form id="waitlist-form">
-    <input type="email" id="email" placeholder="Enter your email" required />
-    <button type="submit">Join Waitlist</button>
-  </form>
-
-  <p id="response-message"></p>
-
-  <div id="referral-section">
-    <strong>Your Referral Link:</strong>
-    <p id="referral-link"></p>
-    <button id="copy-button">Copy Referral Link</button>
-
-    <div class="social-buttons">
-      <a id="twitter-share" class="twitter" href="#" target="_blank">Twitter</a>
-      <a id="whatsapp-share" class="whatsapp" href="#" target="_blank">WhatsApp</a>
-      <a id="telegram-share" class="telegram" href="#" target="_blank">Telegram</a>
-    </div>
-  </div>
-
-  
-</body>
-</html>
-
-
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Odan Waitlist</title>
-  </head>
-  <body>
-    <header>
+  <header>
       <div class="logo">
         <img src="/Assets/Logo.svg" alt="" />
       </div>
@@ -127,6 +42,34 @@
         />
       </svg>
     </header>
+  <form id="waitlist-form">
+    <input type="email" id="email" placeholder="Enter your email" required />
+    <button type="submit">Join Waitlist</button>
+  </form>
+
+  <p id="response-message"></p>
+
+  <div id="referral-section">
+    <strong>Your Referral Link:</strong>
+    <p id="referral-link"></p>
+    <button id="copy-button">Copy Referral Link</button>
+
+    <div class="social-buttons">
+      <a id="twitter-share" class="twitter" href="#" target="_blank">Twitter</a>
+      <a id="whatsapp-share" class="whatsapp" href="#" target="_blank">WhatsApp</a>
+      <a id="telegram-share" class="telegram" href="#" target="_blank">Telegram</a>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    
 
     <!----------Hero section--------->
     <section class="hero_section">
