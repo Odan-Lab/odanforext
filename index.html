@@ -4,113 +4,106 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Join Odan's waitlist for tokenized real estate opportunities on the OdanChain network.">
   <link rel="stylesheet" href="style.css" />
-  <title>Odan Waitlist</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Odan Waitlist - Real Estate Blockchain Platform</title>
 </head>
 <body>
   <header>
     <div class="logo">
       <img src="/Assets/odan.svg" alt="Odan Logo" />
-      <a href="#">OdanChain</a>
+      <span>Odan</span>
     </div>
-    <nav>
+    <nav id="main-nav">
       <ul>
-        <li><a href="#">How it Works</a></li>
-        <li><a href="#">Token Utility</a></li>
-        <li><a href="#">Whitepaper</a></li>
+        <li><a href="#how-it-works">How it Works</a></li>
+        <li><a href="#token-utility">Token Utility</a></li>
+        <li><a href="#whitepaper">Whitepaper</a></li>
       </ul>
     </nav>
     <div class="nav_form-links">
       <button class="btn" type="submit">Join Waitlist</button>
     </div>
-  </header>
-  <header>
-    <div class="logo">
-      <img src="/Assets/odan.svg" alt="" />
-    </div>
-    <nav>
-      <ul>
-        <li>
-          <a href="#"> RoadMap </a>
-        </li>
-        <li>
-          <a href="#">Find Domain </a>
-        </li>
-        <li>
-          <a href="#">Why Hosterr</a>
-        </li>
-      </ul>
-    </nav>
-
-    <div class="nav_form-links">
-      <button class="btn" type="submit">Join Waitlist</button>
-    </div>
-    <svg
-      width="24"
-      height="20"
-      viewbox="0 0 24 20"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M24 4H0V0H24V4ZM24 8H0V12H24V8ZM24 16H0V20H24V16Z"
-        fill="black"
-      />
-    </svg>
+    <button id="mobile-menu-button" class="mobile-menu-button">
+      <i class="fas fa-bars"></i>
+    </button>
   </header>
 
-    <!----------Hero section--------->
+  <!-- Hero Section -->
+  <main>
     <section class="hero_section">
-      <div class="hero_img">
-        <img class="blue_img" src="/Assets/Blue Shape.svg" alt="" />
-        <img class="pink_img" src="/Assets/Pink Shape.svg" alt="" />
-        <img class="purple_img" src="/Assets/Purple Shape.svg" alt="" />
-        <img class="model_img" src="/Assets/Hero Image (Model).png" alt="" />
-      </div>
       <div class="hero_details">
         <h1>
-          Host your website in <br />
-          less than 5 minutes.
+          Real Estate meets Blockchain.<br />
+          Join the Future of Property Investment.
         </h1>
-        <p>
-          With Hosterr, get your website up and running in no less than 5 <br />
-          minutes with the most competitive pricing packages available <br />
-          online.
+        <p class="hero-subtitle">
+          Be the first to access tokenized real estate opportunities on the Odan network.<br />
+          Fast, secure, and borderless property ownership.
         </p>
         <form id="waitlist-form">
-          <input type="email" id="email" placeholder="Enter your email" required />
-          <button type="submit">Join Waitlist</button>
+          <div class="form-group">
+            <input type="email" id="email" placeholder="Enter your email" required />
+            <button type="submit">Join Waitlist</button>
+          </div>
         </form>
 
+        <div class="stats-container">
+          <div class="stat-item">
+            <span class="stat-number" id="total-members">5,000+</span>
+            <span class="stat-label">Members</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" id="countries">50+</span>
+            <span class="stat-label">Countries</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" id="properties">$10M+</span>
+            <span class="stat-label">In Properties</span>
+          </div>
+        </div>
         <p id="response-message"></p>
+
+        
+      </div>
+      <div>
         <div id="referral-section">
           <strong>Your Referral Link:</strong>
           <p id="referral-link"></p>
-          <button id="copy-button">Copy Referral Link</button>
+          <button id="copy-button" class="btn-secondary">Copy Referral Link</button>
 
           <div class="social-buttons">
-            <a id="twitter-share" class="twitter" href="#" target="_blank">Twitter</a>
-            <a id="whatsapp-share" class="whatsapp" href="#" target="_blank">WhatsApp</a>
-            <a id="telegram-share" class="telegram" href="#" target="_blank">Telegram</a>
+            <p>Share and earn rewards:</p>
+            <div class="social-icons">
+              <a id="twitter-share" class="social-icon twitter" href="#" target="_blank" aria-label="Share on Twitter">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a id="whatsapp-share" class="social-icon whatsapp" href="#" target="_blank" aria-label="Share on WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+              </a>
+              <a id="telegram-share" class="social-icon telegram" href="#" target="_blank" aria-label="Share on Telegram">
+                <i class="fab fa-telegram"></i>
+              </a>
+              <a id="linkedin-share" class="social-icon linkedin" href="#" target="_blank" aria-label="Share on LinkedIn">
+                <i class="fab fa-linkedin"></i>
+              </a>
+            </div>
           </div>
         </div>
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="#" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+
       </div>
+      
+      <!-- <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Modern real estate building" loading="lazy">
+      </div> -->
     </section>
-  
-
-  
-
-  <!----------footer section--------->
-    <footer>
-      <ul>
-        <li>Facebook</li>
-        <li>Instagram</li>
-        <li>Twitter</li>
-      </ul>
-      <p>© 2023 Odan. All rights reserved.</p>
-      <p>Terms of Service | Privacy Policy</p>
-    </footer>
-
+  </main>
   <script src="script.js"></script>
 </body>
 </html>

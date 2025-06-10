@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Playfair+Display:wght@400;600;700;800&display=swap');
+:root {
+  --font1: 'Lato', sans-serif;
+  --font2: 'Playfair Display', serif;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  background-size: cover;
+  font-family: var(--font1, 'Segoe UI', sans-serif);
+  color: white;
+  margin: 0;
+}
+
+body {
+  background-color: #102703;
+  font-family: var(--font1);
+}
+a {
+  text-decoration: none;
+}
+
+/**** navigation section****/
+header {
+  padding: 1rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+nav ul li a {
+  font-size: 16px;
+  color: #aaa;
+  transition: color 0.3s;
+}
+
+nav ul li a:hover {
+  color: #00ff00;
+  text-shadow: 0 0 4px #00ff00;
+}
+
+.nav_form-links .btn {
+  background: #4977e9;
+  color: white;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  font-size: 15px;
+  font-weight: 500;
+  box-shadow: 0 0 10px rgba(73, 119, 233, 0.4);
+}
+
+.nav_form-links .btn:hover {
+  background-color: #284fc1;
+}
+
+
+/******* Hero section ********/
+/* Hero Text */
+.hero_details h1 {
+  font-size: 2rem;
+  color: #00ff00;
+  font-family: var(--font2);
+  text-shadow: 0 0 10px rgba(0,255,0,0.5);
+}
+
+.hero_details p {
+  color: #c8f7c5;
+  font-size: 1rem;
+}
+/* Form styling */
+form {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  border: 1px solid #00ff00;
+  box-shadow: 0 0 10px rgba(0,255,0,0.2);
+}
+
+input, button {
+  background: white;
+  border-radius: 6px;
+}
+/******* footer section ********/
+footer {
+  color: #c8f7c5;
+}
+
+
+input, button {
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    #referral-section {
+      display: none;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    #referral-link {
+      word-break: break-all;
+      margin-bottom: 10px;
+    }
+
+    .social-buttons {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .social-buttons a {
+      text-decoration: none;
+      font-size: 20px;
+      padding: 10px;
+      border-radius: 8px;
+      color: white;
+    }
+
+    .twitter { background: #1DA1F2; }
+    .whatsapp { background: #25D366; }
+    .telegram { background: #0088cc; }
