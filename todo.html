@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Join Odan's waitlist for tokenized real estate opportunities on the OdanChain network.">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Odan Waitlist - Real Estate Blockchain Platform</title>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="/Assets/odan.svg" alt="Odan Logo" />
+      <span>Odan</span>
+    </div>
+    <nav id="main-nav">
+      <ul>
+        <li><a href="#how-it-works">How it Works</a></li>
+        <li><a href="#token-utility">Token Utility</a></li>
+        <li><a href="#whitepaper">Whitepaper</a></li>
+      </ul>
+    </nav>
+    <div class="nav_form-links">
+      <button class="btn" type="submit">Join Waitlist</button>
+    </div>
+    <button id="mobile-menu-button" class="mobile-menu-button">
+      <i class="fas fa-bars"></i>
+    </button>
+  </header>
+
+  <!-- Hero Section -->
+  <main>
+    <section class="hero_section">
+      <div class="hero_details">
+        <h1>
+          Real Estate meets Blockchain.<br />
+          Join the Future of Property Investment.
+        </h1>
+        <p class="hero-subtitle">
+          Be the first to access tokenized real estate opportunities on the Odan network.<br />
+          Fast, secure, and borderless property ownership.
+        </p>
+        <form id="waitlist-form">
+          <div class="form-group">
+            <input type="email" id="email" placeholder="Enter your email" required />
+            <button type="submit">Join Waitlist</button>
+          </div>
+        </form>
+
+        <div class="stats-container">
+          <div class="stat-item">
+            <span class="stat-number" id="total-members">5,000+</span>
+            <span class="stat-label">Members</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" id="countries">50+</span>
+            <span class="stat-label">Countries</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" id="properties">$10M+</span>
+            <span class="stat-label">In Properties</span>
+          </div>
+        </div>
+        <p id="response-message"></p>
+
+        
+      </div>
+      <div>
+        <div id="referral-section">
+          <strong>Your Referral Link:</strong>
+          <p id="referral-link"></p>
+          <button id="copy-button" class="btn-secondary">Copy Referral Link</button>
+
+          <div class="social-buttons">
+            <p>Share and earn rewards:</p>
+            <div class="social-icons">
+              <a id="twitter-share" class="social-icon twitter" href="#" target="_blank" aria-label="Share on Twitter">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a id="whatsapp-share" class="social-icon whatsapp" href="#" target="_blank" aria-label="Share on WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+              </a>
+              <a id="telegram-share" class="social-icon telegram" href="#" target="_blank" aria-label="Share on Telegram">
+                <i class="fab fa-telegram"></i>
+              </a>
+              <a id="linkedin-share" class="social-icon linkedin" href="#" target="_blank" aria-label="Share on LinkedIn">
+                <i class="fab fa-linkedin"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="#" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+
+      </div>
+      
+      <!-- <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Modern real estate building" loading="lazy">
+      </div> -->
+    </section>
+
+    <!-- How it Works Section -->
+    <section id="how-it-works" class="info-section">
+      <h2>How Odan Works</h2>
+      <div class="features-container">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-building"></i>
+          </div>
+          <h3>Property Tokenization</h3>
+          <p>Real estate assets are divided into digital tokens representing ownership shares.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-hand-holding-usd"></i>
+          </div>
+          <h3>Fractional Ownership</h3>
+          <p>Invest in high-value properties with small amounts through fractional ownership.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-exchange-alt"></i>
+          </div>
+          <h3>Liquidity & Trading</h3>
+          <p>Trade property tokens on our secure blockchain platform anytime.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Token Utility Section -->
+    <section id="token-utility" class="info-section dark-section">
+      <h2>ODAN Token Utility</h2>
+      <div class="token-grid">
+        <div class="token-benefit">
+          <h3><i class="fas fa-percentage"></i> Staking Rewards</h3>
+          <p>Earn passive income by staking your ODAN tokens in our reward pools.</p>
+        </div>
+        <div class="token-benefit">
+          <h3><i class="fas fa-tag"></i> Discounts</h3>
+          <p>Get reduced fees on property transactions when paying with ODAN tokens.</p>
+        </div>
+        <div class="token-benefit">
+          <h3><i class="fas fa-vote-yea"></i> Governance</h3>
+          <p>Participate in platform decisions through our decentralized governance system.</p>
+        </div>
+        <div class="token-benefit">
+          <h3><i class="fas fa-home"></i> Property Access</h3>
+          <p>Early access to premium property listings for ODAN token holders.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Odan</h3>
+        <p>Revolutionizing real estate investment through blockchain technology.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="#" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#how-it-works">How it Works</a></li>
+          <li><a href="#token-utility">Token Utility</a></li>
+          <li><a href="#whitepaper">Whitepaper</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Contact</h3>
+        <ul>
+          <li><i class="fas fa-envelope"></i> hello@odan.com</li>
+          <li><i class="fas fa-map-marker-alt"></i> Global, Remote</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2023 Odan. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

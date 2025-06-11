@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', function() {
   const copyButton = document.getElementById('copy-button');
   const mobileMenuButton = document.getElementById('mobile-menu-button');
   const mainNav = document.getElementById('main-nav');
+  // Refresh stats every 5 minutes
+  setInterval(fetchStats, 300000);
 
   // Mobile menu toggle
   mobileMenuButton.addEventListener('click', function() {
@@ -32,39 +34,69 @@ document.addEventListener('DOMContentLoaded', function() {
       const data = await response.json();
       
       if (response.ok) {
-        const isWaitlistActive = data.is_waitlist_active;
-        
-        if (isWaitlistActive) {
-          // Show waitlist period stats
-          animateValue('waitlist-members', 0, data.waitlist_members, 2000);
-          animateValue('total-rewards', 0, data.total_rewards, 2000);
-          animateValue('total-invites', 0, data.total_invites, 2000);
-          
-          // Update labels to be more specific
-          document.querySelector('#waitlist-members').nextElementSibling.textContent = 'Waitlist Members';
-          document.querySelector('#total-rewards').nextElementSibling.textContent = 'ODAN Rewards';
-          document.querySelector('#total-invites').nextElementSibling.textContent = 'Total Invites';
-        } else {
-          // Show post-waitlist stats
-          animateValue('waitlist-members', 0, data.total_members, 2000);
-          animateValue('total-rewards', 0, data.countries, 2000);
-          animateValue('total-invites', 0, data.properties, 2000);
-          
-          // Update labels
-          document.querySelector('#waitlist-members').nextElementSibling.textContent = 'Members';
-          document.querySelector('#total-rewards').nextElementSibling.textContent = 'Countries';
-          document.querySelector('#total-invites').nextElementSibling.textContent = 'Properties';
-        }
-      } else {
-        console.error('Error fetching stats:', data);
+        updateStatsDisplay(data);
+        updateCountdown(data.time_remaining);
       }
     } catch (error) {
-      console.error('Network error:', error);
+      console.error('Error fetching stats:', error);
       // Fallback values
-      animateValue('waitlist-members', 0, 5000, 2000);
-      animateValue('total-rewards', 0, 250000, 2000);
-      animateValue('total-invites', 0, 12000, 2000);
+      updateStatsDisplay({
+        is_waitlist_active: true,
+        waitlist_members: 5000,
+        total_rewards: 250000,
+        total_invites: 12000
+      });
     }
+  }
+
+  function updateStatsDisplay(data) {
+    if (data.is_waitlist_active) {
+      // Waitlist stats
+      animateValue('stat-1', 0, data.waitlist_members, 2000);
+      animateValue('stat-2', 0, data.total_rewards, 2000);
+      animateValue('stat-3', 0, data.total_invites, 2000);
+      
+      document.querySelector('#stat-1-label').textContent = 'Waitlist Members';
+      document.querySelector('#stat-2-label').textContent = 'ODAN Rewards';
+      document.querySelector('#stat-3-label').textContent = 'Total Invites';
+    } else {
+      // Post-waitlist stats
+      animateValue('stat-1', 0, data.total_members, 2000);
+      animateValue('stat-2', 0, data.countries, 2000);
+      animateValue('stat-3', 0, data.properties, 2000);
+      
+      document.querySelector('#stat-1-label').textContent = 'Total Members';
+      document.querySelector('#stat-2-label').textContent = 'Countries';
+      document.querySelector('#stat-3-label').textContent = 'Properties';
+    }
+  }
+
+  function updateCountdown(seconds) {
+    if (!seconds || seconds <= 0) return;
+    
+    const countdownElement = document.getElementById('waitlist-countdown');
+    if (!countdownElement) return;
+
+    function update() {
+      const days = Math.floor(seconds / 86400);
+      const hours = Math.floor((seconds % 86400) / 3600);
+      const mins = Math.floor((seconds % 3600) / 60);
+      const secs = seconds % 60;
+      
+      countdownElement.innerHTML = `
+        Waitlist ends in: 
+        ${days}d ${hours}h ${mins}m ${secs}s
+      `;
+      
+      if (seconds <= 0) {
+        clearInterval(timer);
+        fetchStats(); // Refresh stats when countdown ends
+      }
+      seconds--;
+    }
+    
+    update();
+    const timer = setInterval(update, 1000);
   }
 
   // Animate stats counter

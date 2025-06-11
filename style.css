@@ -1,7 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Playfair+Display:wght@400;600;700;800&display=swap');
 :root {
+  /* Typography */
   --font1: 'Lato', sans-serif;
   --font2: 'Playfair Display', serif;
+
+  /* Color Scheme */
   --primary-color: #00ff00;
   --primary-dark: #00cc00;
   --secondary-color: #4977e9;
@@ -12,8 +15,34 @@
   --text-muted: #a0b0a0;
   --card-bg: rgba(255, 255, 255, 0.05);
   --transition: all 0.3s ease;
+  --success: #28a745;
+  --info: #17a2b8;
+  --warning: #ffc107;
+  --danger: #dc3545;
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-xxl: 3rem;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
+  --shadow-primary: 0 0 15px rgba(73, 119, 233, 0.3);
+  
+  /* Borders */
+  --border-radius: 8px;
+  --border-radius-lg: 12px;
+  --border: 1px solid rgba(0,0,0,0.1);
+  --border-primary: 1px solid var(--primary);
+  
 }
 
+/* Base Styles */
 * {
   margin: 0;
   padding: 0;
@@ -32,14 +61,38 @@ body {
   overflow-x: hidden;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font2);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: var(--space-md);
+}
+
 a {
   text-decoration: none;
   color: inherit;
 }
 
+a:hover {
+  color: var(--primary-dark);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Layout */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
 /* Header Styles */
 header {
-  padding: 1rem 2rem;
+  padding: var(--space-md) 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -49,7 +102,7 @@ header {
   top: 0;
   z-index: 1000;
   backdrop-filter: blur(10px);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow-sm);
 }
 
 .logo {
@@ -220,6 +273,22 @@ main {
 
 .stat-item {
   text-align: center;
+}
+
+.stats-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.stats-header h3 {
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+#waitlist-countdown {
+  font-size: 1rem;
+  color: var(--text-muted);
+  font-weight: 500;
 }
 
 .stat-number {
@@ -658,6 +727,8 @@ footer {
   font-family: var(--font2);
 }
 
+
+
 /* Token Economy */
 .token-economy {
   padding: 4rem 2rem;
@@ -705,23 +776,39 @@ footer {
 
 /* Utility Grid */
 .utility-grid {
-  display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
 }
 
+/* Card Styles */
+.architecture-grid,
+.ecosystem-grid,
+.utility-grid {
+  display: grid;
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+}
+
+.architecture-grid {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.architecture-card,
+.ecosystem-card,
 .utility-card {
   background: var(--card-bg);
-  padding: 2rem;
-  border-radius: 10px;
+  border-radius: var(--border-radius-lg);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-md);
   transition: var(--transition);
-  border: 1px solid rgba(0, 255, 0, 0.1);
+  border: var(--border);
   position: relative;
   overflow: hidden;
 }
+
+
 
 .utility-card:hover {
   transform: translateY(-10px);
