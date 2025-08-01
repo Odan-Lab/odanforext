@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       } else {
       // Handle API errors
-        showMessage(data.detail || 'email already exist in the system.', 'error');
+        showMessage(data.detail || 'Something went wrong. Please try again later.', 'error');
       }
     } catch (error) {
       // Handle network errors
