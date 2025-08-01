@@ -207,10 +207,16 @@ document.addEventListener('DOMContentLoaded', function() {
     return params.get('ref');
   }
 
+  // function validateEmail(email) {
+  //   const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  //   return re.test(email);
+  // }
+
   function validateEmail(email) {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(email);
+    const re = /^[^\s@]+@[^\s@]+\.(gmail\.com|yahoo\.com)$/i;
+    return re.test(email.trim());
   }
+
 
   function showMessage(text, type) {
     message.textContent = text;
