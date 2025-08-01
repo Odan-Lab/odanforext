@@ -191,13 +191,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       } else {
       // Handle API errors
-        if (data && data.email && Array.isArray(data.email) && data.email.length > 0) {
-          showMessage(data.email[0], 'email already exist in the system');  // e.g., "This email is already registered."
-        } else if (data.detail) {
-          showMessage(data.detail, 'error');    // e.g., general API error message
-        } else {
-          showMessage('Something went wrong. Please try again later.', 'error');
-        }
+        showMessage(data.detail || 'email already exist in the system.', 'error');
       }
     } catch (error) {
       // Handle network errors
