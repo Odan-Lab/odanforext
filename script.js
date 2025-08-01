@@ -1,20 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
   fetchStats();
   const form = document.getElementById('waitlist-form');
-  const emailInput = document.getElementById('email');
   const submitButton = form.querySelector('button[type="submit"]');
 
-  // Disable initially
-  submitButton.disabled = true;
-
-  // Enable only for allowed email domains
-  emailInput.addEventListener('input', () => {
-    if (validateEmail(emailInput.value)) {
-      submitButton.disabled = false;
-    } else {
-      submitButton.disabled = true;
-    }
-  });
+ 
   const message = document.getElementById('response-message');
   const referralSection = document.getElementById('referral-section');
   const referralLinkElem = document.getElementById('referral-link');
