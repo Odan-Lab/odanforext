@@ -147,9 +147,6 @@ document.addEventListener('DOMContentLoaded', function() {
       showMessage('Please enter a valid email address', 'error');
       return;
     }
-
-    
-
     showMessage('Processing your request...', 'info');
 
     try {
@@ -192,9 +189,21 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('linkedin-share').href = linkedinURL;
 
       } else {
-      // Handle API errors
-        showMessage(data.detail || 'email rejected', 'error');
+      // Custom error messages based on status code
+      switch (response.status) {
+        case 400:
+          showMessage('Email is required.', 'error');
+          break;
+        case 401:
+          showMessage('Only Gmail and Yahoo email addresses are allowed.', 'error');
+          break;
+        case 402:
+          showMessage(data.message || 'Email already registered.', 'error');
+          break;
+        default:
+          showMessage(data.error || 'Something went wrong. Please try again.', 'error');
       }
+    }
     } catch (error) {
       // Handle network errors
       showMessage('Network error. Please try again later.', 'error');
