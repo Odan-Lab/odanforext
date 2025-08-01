@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', function() {
       } else {
       // Handle API errors
         if (data && data.email && Array.isArray(data.email) && data.email.length > 0) {
-          showMessage(data.email[0], 'error');  // e.g., "This email is already registered."
+          showMessage(data.email[0], 'email already exist in the system');  // e.g., "This email is already registered."
         } else if (data.detail) {
           showMessage(data.detail, 'error');    // e.g., general API error message
         } else {
