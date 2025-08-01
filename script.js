@@ -1,9 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
   fetchStats();
   const form = document.getElementById('waitlist-form');
-  const submitButton = form.querySelector('button[type="submit"]');
-
- 
   const message = document.getElementById('response-message');
   const referralSection = document.getElementById('referral-section');
   const referralLinkElem = document.getElementById('referral-link');
@@ -212,16 +209,10 @@ document.addEventListener('DOMContentLoaded', function() {
     return params.get('ref');
   }
 
-  // function validateEmail(email) {
-  //   const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  //   return re.test(email);
-  // }
-
   function validateEmail(email) {
-    const re = /^[^\s@]+@[^\s@]+\.(gmail\.com|yahoo\.com)$/i;
-    return re.test(email.trim());
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
   }
-
 
   function showMessage(text, type) {
     message.textContent = text;
